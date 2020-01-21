@@ -6,7 +6,7 @@ import theme from './theme'
 import client from './client'
 import Welcome from './containers/Welcome'
 import Login from './containers/Login'
-import Register from './containers/Register'
+import Register from './containers/Register/register'
 import MainPage from './containers/MainPage'
 
 
@@ -16,10 +16,10 @@ const App = () => (
       <ApolloProvider client={client}>
         <div className="App">
           <Switch>
-            <Route path="/" component={Welcome} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/home" component={MainPage} />
+            <Route path="/" component={Welcome} />
           </Switch>
         </div>
       </ApolloProvider>

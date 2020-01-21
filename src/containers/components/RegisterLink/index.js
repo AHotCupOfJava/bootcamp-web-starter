@@ -1,9 +1,13 @@
 import React from 'react'
-import {StyledLink} from './styles'
+import { StyledLink } from './styles'
 
-const RegisterLink = () => <StyledLink to="/register"><button>
-    Register</button>
-    </StyledLink>
+const RegisterLink = () => (
+  <StyledLink to="/register">
+    <button type="button">
+    Register
+    </button>
+  </StyledLink>
+)
 
 
 export default RegisterLink

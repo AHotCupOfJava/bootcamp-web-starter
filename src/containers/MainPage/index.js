@@ -1,5 +1,6 @@
 import React from 'react'
+import SearchBar from './Search'
 
-const MainPage = () => <div>Cool</div>
+const MainPage = () => <SearchBar />
 
 export default MainPage
