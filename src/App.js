@@ -4,7 +4,7 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import client from './client'
-import Home from './containers/Home'
+import Home from './containers/Welcome'
 
 const App = () => (
   <Router>
