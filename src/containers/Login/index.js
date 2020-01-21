@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Login = () => (
-  <div>
-        Login Page
-  </div>
+    <div>
+        <p>Login Page</p>
+    </div>
 )
 
 export default Login
