@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Home = () => <div>Welcome to the DEV React starter!</div>
+const Welcome = () => <div>Welcome to the DEV React starter!</div>
 
 
-export default Home
+export default Welcome
