@@ -1,9 +1,13 @@
 import React from 'react'
-import {StyledLink} from './styles'
+import { StyledLink } from './styles'
 
-const LoginLink = () => <StyledLink to="/login"><button>
-    Login</button>
-    </StyledLink>
+const LoginLink = () => (
+  <StyledLink to="/login">
+    <button type="button">
+    Login
+    </button>
+  </StyledLink>
+)
 
 
 export default LoginLink

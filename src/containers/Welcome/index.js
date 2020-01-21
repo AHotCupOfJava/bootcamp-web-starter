@@ -7,6 +7,11 @@ import RegisterLink from '../components/RegisterLink'
 const Welcome = () => (
   <Container>
     <h1>Welcome to Your Dream Page!</h1>
+
+    <p>
+    place description here
+    </p>
+
     <LoginLink />
     <RegisterLink />
 
