@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Text } from './styles'
+import { Container } from './styles'
 import LoginLink from '../components/LoginLink'
 import RegisterLink from '../components/RegisterLink'
 

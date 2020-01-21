@@ -6,6 +6,7 @@ import {
 } from './styles'
 
 const Login = () => {
+  const history = useHistory()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [login, {
@@ -18,8 +19,7 @@ const Login = () => {
     onCompleted: ({ login: { token } }) => localStorage.setItem('token', token),
   })
 
-
-  if (loading) { return <p> Loading ... </p> }
+  if (loading) return <p> Loading ... </p>
   if (error) {
     return (<p>Error</p>)
   }
