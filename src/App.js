@@ -12,6 +12,9 @@ const App = () => (
       <ApolloProvider client={client}>
         <div className="App">
           <Switch>
+            <Route path="/" component={Welcome} />
+            <Route path="/login" component={Home} />
+            <Route path="/" component={Home} />
             <Route path="/" component={Home} />
           </Switch>
         </div>
