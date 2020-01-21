@@ -6,7 +6,7 @@ import theme from './theme'
 import client from './client'
 import Welcome from './containers/Welcome'
 import Login from './containers/Login'
-import Register from './containers/Register/register'
+import Register from './containers/Register'
 import MainPage from './containers/MainPage'
 
 
