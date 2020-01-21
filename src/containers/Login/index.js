@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Login = () => <div>Welcome to the DEV React starter!</div>
+const Login = () => {
+    <div>
+        Login Page
+    </div>
 
+}
 
 export default Login
