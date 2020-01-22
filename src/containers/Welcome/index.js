@@ -23,15 +23,19 @@ const Welcome = () => {
       <p>Words!words?</p>
       <LoginLink />
       <RegisterLink />
-      {weather ? (
-        <p>
-City:
-          {weather.name}
-          {' '}
-Weather:
-          {weather.weather[0].description}
-        </p>
-      ) : <p>Your weather data is loading...</p>}
+      {weather
+        ? (
+          <p>
+            City:
+            {' '}
+            {weather.name}
+            {' '}
+            Weather:
+            {' '}
+            {weather.weather[0].description}
+          </p>
+        )
+        : <p>Your weather data is loading...</p>}
     </Container>
   )
 }
