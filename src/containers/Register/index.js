@@ -2,9 +2,8 @@ import React, { useReducer } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { REGISTER } from '../graphql'
 import {
-  Container, Button, TextBar, Header,
+  Container, Header, TextBar, Button,
 } from './styles'
-
 
 const Register = () => {
   const formReducer = (prevState, payload) => ({ ...prevState, ...payload })

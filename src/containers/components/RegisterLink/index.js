@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyledLink } from './styles'
+import FancyButton, { StyledLink } from './styles'
 
 const RegisterLink = () => (
   <StyledLink to="/register">
-    <button type="button">
+    <FancyButton type="button">
     Register
-    </button>
+    </FancyButton>
   </StyledLink>
 )
 

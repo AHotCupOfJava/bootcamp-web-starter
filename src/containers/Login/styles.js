@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
     width: 100vw;
@@ -15,7 +16,7 @@ export const Header = styled.h1`
  font-family: ${({ theme }) => theme.fonts.header.family};
  `
 export const Button = styled.button`
-    width: 21%;
+    width: 100px;
     height: 40px;
     font-size: ${({ theme }) => theme.fonts.body.larger};
     text-align: center;
@@ -54,3 +55,5 @@ export const TextBar = styled.input`
   color: #000000;
     }
 `
+
+export const StyledLink = styled(Link)``
