@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from '../graphql'
 import {
@@ -6,6 +7,7 @@ import {
 } from './styles'
 
 const Login = () => {
+  const history = useHistory()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [login, {
@@ -15,11 +17,13 @@ const Login = () => {
       email,
       password,
     },
-    onCompleted: ({ login: { token } }) => localStorage.setItem('token', token),
+    onCompleted: ({ login: { token } }) => {
+      localStorage.setItem('token', token)
+      history.push('/home')
+    },
   })
 
-
-  if (loading) { return <p> Loading ... </p> }
+  if (loading) return <p> Loading ... </p>
   if (error) {
     return (<p>Error</p>)
   }
@@ -43,7 +47,6 @@ const Login = () => {
         <Button type="button" onClick={login}>Log in</Button>
         <p>Need an account? Register</p>
       </Container>
-      {called ? <p>{data.login.user.email}</p> : <p>NOT CALLED</p>}
     </div>
   )
 }
