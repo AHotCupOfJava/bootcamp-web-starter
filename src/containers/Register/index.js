@@ -1,9 +1,6 @@
 import React, { useReducer } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { REGISTER } from '../graphql'
-import {
-  Container, Button, TextBar, Header,
-} from './styles'
 
 
 const Register = () => {
