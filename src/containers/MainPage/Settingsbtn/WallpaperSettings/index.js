@@ -1,7 +1,12 @@
 import React from 'react'
+import { OpContainer } from './styles'
+
 
 const WallpaperOptions = () => (
-  <button type="button">Wallpaper</button>
+  <OpContainer>
+    <input type="checkbox" id="wallpaper" />
+    <label htmlFor="wallpaper">Wallpaper</label>
+  </OpContainer>
 )
 
 

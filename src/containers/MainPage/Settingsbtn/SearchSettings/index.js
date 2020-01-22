@@ -1,7 +1,13 @@
 import React from 'react'
+import { OpContainer } from './styles'
 
 const SearchOptions = () => (
-  <button type="button">Search</button>
+  <OpContainer>
+
+    <input type="checkbox" defaultChecked id="search" />
+    <label htmlFor="search">Search</label>
+
+  </OpContainer>
 )
 
 
