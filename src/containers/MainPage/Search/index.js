@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from './styles'
+import { Container, Input, Submit } from './styles'
 
 
 const SearchBar = () => (
@@ -7,12 +7,11 @@ const SearchBar = () => (
     <form method="get" action="http://www.google.com/search">
 
 
-      <input
+      <Input
         type="text"
         name="q"
-
       />
-      <input type="submit" value="Go!" />
+      <Submit type="submit" value="Go!" />
 
 
     </form>

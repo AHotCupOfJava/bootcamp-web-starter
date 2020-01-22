@@ -7,14 +7,22 @@ import UserGreeting from './UserGreeting'
 import GET_VIEWER from './graphql'
 import { Container } from './styles'
 
+const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
 
 const MainPage = () => {
-  const { loading, error, data } = useQuery(GET_VIEWER)
-
-  const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
   const [preferences, setPreferences] = useReducer(
     formReducer, { searchBar: true, weatherCur: true, greeting: true },
   )
+  const { loading, error } = useQuery(GET_VIEWER, {
+    onCompleted: ({ getViewer }) => setPreferences(
+      {
+        searchBar: getViewer.searchBar,
+        weatherCur: getViewer.weatherCur,
+        greeting: getViewer.greeting,
+      },
+    ),
+  })
+
 
   if (error) {
     return `${error}`
@@ -22,10 +30,6 @@ const MainPage = () => {
   if (loading) {
     return 'Loading...'
   }
-
-  const { sb, wc, g } = data.getViewer.preferences
-  setPreferences({ searchBar: sb, weatherCur: wc, greeting: g })
-
 
   return (
     <Container>

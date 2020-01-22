@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Flickr from 'flickr-sdk'
-import { assertCompositeType } from 'graphql'
 import { Container, img } from './styles'
 import LoginLink from '../components/LoginLink'
 import RegisterLink from '../components/RegisterLink'
@@ -21,17 +20,14 @@ const Welcome = () => {
           extras: ['url_c', 'description'],
           per_page: 1,
           sort: 'relevance',
-          tags: 'background wallpaper',
         })
-        console.log(imgLibrary)
-        console.log(data.weather[0].description)
+
         if (imgLibrary.body.photos.photo[0].url_c) {
           setImage(imgLibrary.body.photos.photo[0].url_c)
         } else {
           setImage('https://cdn.wallpapersafari.com/64/53/DI52GS.jpg')
         }
 
-        // eslint-disable-next-line no-alert
         /* {weather ? (
           <p>
 City:
@@ -42,6 +38,7 @@ Weather:
           </p>
 
         ) : <p>Your weather data is loading...</p>} */
+        // eslint-disable-next-line no-alert
       }, () => alert('Failed to fetch weather data.'))
     }
   }, [weather])

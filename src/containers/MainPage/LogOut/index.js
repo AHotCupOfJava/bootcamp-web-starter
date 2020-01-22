@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyledLink } from './styles'
+import { StyledLink, Button } from './styles'
 
 const LogOutLink = () => (
   <StyledLink to="/">
-    <button type="button">
+    <Button type="button">
     LogOut
-    </button>
+    </Button>
   </StyledLink>
 )
 
