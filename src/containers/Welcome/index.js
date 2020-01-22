@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container } from './styles'
+import { Container, Text } from './styles'
 import LoginLink from '../components/LoginLink'
 import RegisterLink from '../components/RegisterLink'
 
@@ -19,8 +19,12 @@ const Welcome = () => {
 
   return (
     <Container>
-      <h1>Welcome to Your Dream Page!</h1>
-      <p>Words!words?</p>
+      <h1>Welcome!</h1>
+      <Text>
+        This is a website where you can customize your own New Tab page.
+        The background changes according to the weather in your current location,
+        and you can choose which widgets you want to turn on and off.
+      </Text>
       <LoginLink />
       <RegisterLink />
       {weather

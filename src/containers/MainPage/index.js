@@ -5,16 +5,26 @@ import SettingsBtn from './Settingsbtn'
 import LogOutLink from './LogOut'
 import UserGreeting from './UserGreeting'
 import GET_VIEWER from './graphql'
+import { Container } from './styles'
 
 const MainPage = () => {
   const { loading, error, data } = useQuery(GET_VIEWER)
+
+  if (error) {
+    return `Error: ${error}`
+  }
+  if (loading) {
+    return 'Loading...'
+  }
+
   return (
-    <div>
+    <Container>
       <LogOutLink />
       <UserGreeting name="Johhny" />
       <SearchBar />
       <SettingsBtn />
-    </div>
+
+    </Container>
   )
 }
 

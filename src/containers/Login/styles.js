@@ -30,7 +30,7 @@ export const Button = styled.button`
     }
 `
 export const TextBar = styled.textarea`
-    width: 20%;
+  width: 20%;
   height: 40px;
   vertical-align: middle;
   border-radius: 3px;
