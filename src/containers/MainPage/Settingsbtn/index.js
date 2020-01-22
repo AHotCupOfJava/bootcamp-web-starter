@@ -1,19 +1,16 @@
 import React from 'react'
-
 import { StyledMenu } from './styles'
 import GreetingOptions from './GreetingSettings'
 import SearchOptions from './SearchSettings'
 import WallpaperOptions from './WallpaperSettings'
 
-const Settingsbtn = () => (
+const Settingsbtn = ({ preferences, setPreferences }) => (
   <StyledMenu>
     <button type="button">Settings</button>
     <div>
-      <GreetingOptions />
-      <SearchOptions />
-      <WallpaperOptions />
-
-
+      <GreetingOptions check={preferences.greeting} setPreferences={setPreferences} />
+      <SearchOptions check={preferences.searchBar} setPreferences={setPreferences} />
+      <WallpaperOptions check={preferences.weatherCur} setPreferences={setPreferences} />
     </div>
   </StyledMenu>
 )
