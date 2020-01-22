@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from '../graphql'
 import { Container, Button, TextBar } from './styles'
