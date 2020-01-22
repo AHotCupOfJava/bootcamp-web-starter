@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { REGISTER } from '../graphql'
 
@@ -10,7 +10,9 @@ const Register = () => {
       email: '', username: '', password: '', firstName: '', lastName: '',
     })
 
-  const [register, { loading, error, data, called }] = useMutation(REGISTER, {
+  const [register, {
+    loading, error, data, called,
+  }] = useMutation(REGISTER, {
     variables: {
       input: form,
     },
@@ -18,18 +20,13 @@ const Register = () => {
 
   if (error) return `Error: ${error}`
   if (loading) return 'Loading...'
-  if (called) {
-    console.log("called!")
-    console.log(form)
-    console.log(data)
-  }
 
   return (
     <div style={{
       display: 'flex', flexDirection: 'column', margin: '20px',
     }}
     >
-      <h1 style={{ display: 'flex', justifyContent: 'center', font: 'sansSerif', }}>Register!</h1>
+      <h1 style={{ display: 'flex', justifyContent: 'center', font: 'sansSerif' }}>Register!</h1>
       <input placeholder="Email" name="email" onChange={e => setForm({ [e.target.name]: e.target.value })} />
       <input placeholder="Username" name="username" onChange={e => setForm({ [e.target.name]: e.target.value })} />
       <input placeholder="Password" name="password" type="password" onChange={e => setForm({ [e.target.name]: e.target.value })} />
