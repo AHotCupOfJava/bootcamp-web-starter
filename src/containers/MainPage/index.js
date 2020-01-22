@@ -35,7 +35,7 @@ const MainPage = () => {
     <Container>
       <LogOutLink />
       {preferences.greeting ? (
-        <UserGreeting name="johnny" />) : (null)}
+        <UserGreeting name={data.getViewer.firstName} />) : (null)}
       {preferences.searchBar ? (
         <SearchBar />) : null}
       <SettingsBtn preferences={preferences} setPreferences={setPreferences} />
