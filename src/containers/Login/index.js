@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from '../graphql'
+import { Container, Button, TextBar } from './styles'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -19,14 +20,38 @@ const Login = () => {
   if (error) {
     return (<p>Error</p>)
   }
-
+  // apply font change
 
   return (
     <div>
-      <p>Login Page</p>
-      <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-      <input type="text" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-      <button type="button" onClick={login}>Login</button>
+      <Container>
+        <h1>Log in</h1>
+
+        <br />
+
+        <TextBar
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+
+        <br />
+        <TextBar
+          type="text"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <br />
+        <Button
+          type="button"
+          onClick={login}
+        >
+Log in
+        </Button>
+        <p>Need an account? Register </p>
+      </Container>
       {called ? <p>{data.login.user.email}</p> : <p>NOT CALLED</p>}
     </div>
   )
