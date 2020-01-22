@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { REGISTER } from '../graphql'
 import {
@@ -6,6 +7,7 @@ import {
 } from './styles'
 
 const Register = () => {
+  const history = useHistory()
   const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
 
   const [form, setForm] = useReducer(formReducer,
@@ -14,18 +16,19 @@ const Register = () => {
     })
 
   const [register, {
-    loading, error, data, called,
+    loading, error,
   }] = useMutation(REGISTER, {
     variables: {
       input: form,
+    },
+    onCompleted: ({ register: { token } }) => {
+      localStorage.setItem('token', token)
+      history.push('/home')
     },
   })
 
   if (error) return `Error: ${error}`
   if (loading) return 'Loading...'
-  if (called) {
-    return 'called'
-  }
 
   return (
     <div>
@@ -72,14 +75,10 @@ const Register = () => {
         />
 
         <br />
-        <Button
-          type="button"
-          onClick={register}
-        >
-Add User
+        <Button type="button" onClick={register}>
+          Add User
         </Button>
       </Container>
-      {called ? <p>{data.register.user.username}</p> : <p>Not called yet</p>}
     </div>
   )
 }

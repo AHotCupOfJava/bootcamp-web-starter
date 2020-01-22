@@ -4,7 +4,7 @@ import { StyledLink, Button } from './styles'
 const LogOutLink = () => (
   <StyledLink to="/">
     <Button type="button">
-    LogOut
+    Log Out
     </Button>
   </StyledLink>
 )
