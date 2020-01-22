@@ -10,12 +10,15 @@ import { Container } from './styles'
 const MainPage = () => {
   const { loading, error, data } = useQuery(GET_VIEWER)
 
+  console.log(data)
   if (error) {
-    return `Error: ${error}`
+    return `${error}`
   }
   if (loading) {
     return 'Loading...'
   }
+
+  console.log(data)
 
   return (
     <Container>
@@ -23,7 +26,6 @@ const MainPage = () => {
       <UserGreeting name="Johhny" />
       <SearchBar />
       <SettingsBtn />
-
     </Container>
   )
 }
