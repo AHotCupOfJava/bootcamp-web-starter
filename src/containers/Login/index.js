@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useHistory } from 'react'
+import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from '../graphql'
 import { Container, Button, TextBar } from './styles'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [login, {
-    loading, data, error, called,
-  }] = useMutation(LOGIN, {
-    variables: {
-      email,
-      password,
-    },
+    const history = useHistory()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [login, { loading, data, error, called }] = useMutation(LOGIN, {
+        variables: {
+            email: email,
+            password: password,
+        },
+        onCompleted: ({ login: { token } }) => localStorage.setItem('token', token),
+    })
 
   })
 

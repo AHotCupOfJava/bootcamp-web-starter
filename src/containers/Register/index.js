@@ -3,36 +3,40 @@ import { useMutation } from '@apollo/react-hooks'
 import { REGISTER } from '../graphql'
 
 const Register = () => {
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
-  const [username, setUsername] = useState('')
   const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
 
   const [form, setForm] = useReducer(formReducer,
     {
-      title: '', language: '', numPages: 0, datePublished: '', bestseller: false, authorId: '', publisherId: '',
+      email: '', username: '', password: '', firstName: '', lastName: '',
     })
 
-  const [addUser] = useMutation(REGISTER, {
+  const [register, { loading, error, data, called }] = useMutation(REGISTER, {
     variables: {
-      input: {
-        email: email,
-        password: pass,
-        username: username,
-      },
+      input: form,
     },
   })
+
+  if (error) return `Error: ${error}`
+  if (loading) return 'Loading...'
+  if (called) {
+    console.log("called!")
+    console.log(form)
+    console.log(data)
+  }
 
   return (
     <div style={{
       display: 'flex', flexDirection: 'column', margin: '20px',
     }}
     >
-      <h1 style={{ display: 'flex', justifyContent: 'center' }}>Register!</h1>
-      <input placeholder="email" value={email} onChange={e => setEmail(e.target.value)} />
-      <input placeholder="username" value={username} onChange={e => setUsername(e.target.value)} />
-      <input placeholder="password" value={pass} onChange={e => setPass(e.target.value)} />
-      <button type="button" onClick={addUser}>Add User</button>
+      <h1 style={{ display: 'flex', justifyContent: 'center', font: 'sansSerif', }}>Register!</h1>
+      <input placeholder="Email" name="email" onChange={e => setForm({ [e.target.name]: e.target.value })} />
+      <input placeholder="Username" name="username" onChange={e => setForm({ [e.target.name]: e.target.value })} />
+      <input placeholder="Password" name="password" type="password" onChange={e => setForm({ [e.target.name]: e.target.value })} />
+      <input placeholder="First Name" name="firstName" onChange={e => setForm({ [e.target.name]: e.target.value })} />
+      <input placeholder="Last Name" name="lastName" onChange={e => setForm({ [e.target.name]: e.target.value })} />
+      <button type="button" onClick={register}>Add User</button>
+      {called ? <p>{data.register.user.username}</p> : <p>Not called yet</p>}
     </div>
   )
 }
