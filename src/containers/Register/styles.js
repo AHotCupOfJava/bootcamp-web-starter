@@ -32,13 +32,8 @@ export const Button = styled.button`
         color:#FFFFFF;
     }
 `
-<<<<<<< HEAD
-export const TextBar = styled.textarea`
-  width: 20%;
-=======
 export const TextBar = styled.input`
     width: 20%;
->>>>>>> 554aa4164c32031fc00d4ea64b2baf5656a3951a
   height: 40px;
   vertical-align: middle;
   border-radius: 3px;
