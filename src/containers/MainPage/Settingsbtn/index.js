@@ -1,5 +1,5 @@
 import React from 'react'
-import Select from 'react-select'
+
 import { StyledMenu } from './styles'
 import GreetingOptions from './GreetingSettings'
 import SearchOptions from './SearchSettings'
