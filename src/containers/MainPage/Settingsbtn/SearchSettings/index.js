@@ -1,10 +1,10 @@
 import React from 'react'
 import { OpContainer } from './styles'
 
-const SearchOptions = () => (
+const SearchOptions = ({ check, setPreferences }) => (
   <OpContainer>
 
-    <input type="checkbox" defaultChecked id="search" />
+    <input type="checkbox" name="searchBar" defaultChecked={check} id="greeting" onClick={e => setPreferences({ [e.target.name]: e.target.checked })} />
     <label htmlFor="search">Search</label>
 
   </OpContainer>

@@ -2,9 +2,9 @@ import React from 'react'
 import { OpContainer } from './styles'
 
 
-const WallpaperOptions = () => (
+const WallpaperOptions = ({ check, setPreferences }) => (
   <OpContainer>
-    <input type="checkbox" id="wallpaper" />
+    <input type="checkbox" name="weatherCur" defaultChecked={check} id="greeting" onClick={e => setPreferences({ [e.target.name]: e.target.checked })} />
     <label htmlFor="wallpaper">Wallpaper</label>
   </OpContainer>
 )
