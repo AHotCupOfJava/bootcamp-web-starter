@@ -1,5 +1,11 @@
 // Add global styles and fonts here
+import WebFont from 'webfontloader'
 
+WebFont.load({
+  google: {
+    families: ['Montserrat', 'sans-serif'],
+  },
+})
 const theme = {
   colors: {
     navbar: '#0C1034',
@@ -21,8 +27,8 @@ const theme = {
       color: '#FFFFFF',
       headerweight: 500,
       size: '15px',
-      larger: '20px',
-      fontfamily: 'sans-serif',
+      larger: '3em',
+      family: 'Montserrat',
     },
   },
 }
