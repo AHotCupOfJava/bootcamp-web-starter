@@ -13,7 +13,7 @@ const MainPage = () => {
   const [preferences, setPreferences] = useReducer(
     formReducer, { searchBar: true, weatherCur: true, greeting: true },
   )
-  const { loading, error } = useQuery(GET_VIEWER, {
+  const { loading, error, data } = useQuery(GET_VIEWER, {
     onCompleted: ({ getViewer }) => setPreferences(
       {
         searchBar: getViewer.searchBar,
