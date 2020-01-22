@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from '../graphql'
 import {
-  Container, Button, TextBar, Header,
+  Container, Button, TextBar, Header, StyledLink,
 } from './styles'
 
 const Login = () => {
@@ -40,7 +40,9 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
         />
         <br />
-        <Button type="button" onClick={login}>Log in</Button>
+        <StyledLink to="/login">
+          <Button type="button" onClick={login}>Log in</Button>
+        </StyledLink>
         <p>Need an account? Register</p>
       </Container>
       {called ? <p>{data.login.user.email}</p> : <p>NOT CALLED</p>}

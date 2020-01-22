@@ -11,6 +11,11 @@ import { Container } from './styles'
 const MainPage = () => {
   const { loading, error, data } = useQuery(GET_VIEWER)
 
+  const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
+  const [preferences, setPreferences] = useReducer(
+    formReducer, { searchBar: true, weatherCur: true, greeting: true },
+  )
+
   if (error) {
     return `${error}`
   }
@@ -18,9 +23,9 @@ const MainPage = () => {
     return 'Loading...'
   }
 
-  const { searchBar, weatherCur, greeting } = data.getViewer.preferences
-  const fromReducer = (prevState, payload) => ({ ...prevState, ...payload })
-  const [preferences, setPreferences] = useReducer(fromReducer, { searchBar, weatherCur, greeting })
+  const { sb, wc, g } = data.getViewer.preferences
+  setPreferences({ searchBar: sb, weatherCur: wc, greeting: g })
+
 
   return (
     <Container>
