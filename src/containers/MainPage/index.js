@@ -8,7 +8,7 @@ import UserGreeting from './UserGreeting'
 import { GET_VIEWER, PREFERENCES } from './graphql'
 import { Image } from '../Welcome/styles'
 import {
-  Container, Page, TopBarWrapper,
+  Container, Page, TopBarWrapper, Wrapper,
 } from './styles'
 
 const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
@@ -39,10 +39,10 @@ const MainPage = () => {
     if (!weather) {
       navigator.geolocation.getCurrentPosition(async ({ coords }) => {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=db5bbba816b58757082ce2230c7754a6&units=imperial`)
-        const data = await response.json()
-        setWeather(data)
+        const weatherData = await response.json()
+        setWeather(weatherData)
         const imgLibrary = await flickr.photos.search({
-          text: `${data.weather[0].description} background`,
+          text: `${weatherData.weather[0].description} background`,
           extras: ['url_c', 'description'],
           per_page: 1,
           sort: 'relevance',
@@ -79,30 +79,26 @@ const MainPage = () => {
     <Page>
       <TopBarWrapper>
         <LogOutLink />
-      </TopBarWrapper>
-
-
-      <Image
-        src={image}
-        alt="weather"
-        fade={fade}
-      />
-      <Container>
-        {preferences.greeting ? (
-          <UserGreeting name={data.getViewer.firstName} />) : (null)}
-        {preferences.searchBar ? (
-          <SearchBar />) : null}
         <SettingsBtn
           preferences={data.getViewer.prefs}
           setPreferences={setPreferences}
           update={updatePrefs}
         />
       </TopBarWrapper>
+
+      <Image
+        src={image}
+        alt="weather"
+        fade={fade}
+      />
+
       <Container>
-        {preferences.greeting ? (
-          <UserGreeting name={data.getViewer.firstName} />) : (null)}
-        {preferences.searchBar ? (
-          <SearchBar />) : null}
+        <Wrapper>
+          {preferences.greeting ? (
+            <UserGreeting name={data.getViewer.firstName} />) : (null)}
+          {preferences.searchBar ? (
+            <SearchBar />) : null}
+        </Wrapper>
       </Container>
     </Page>
   )
