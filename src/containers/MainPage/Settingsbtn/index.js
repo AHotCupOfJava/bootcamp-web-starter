@@ -3,6 +3,7 @@ import { StyledMenu, Button } from './styles'
 import GreetingOptions from './GreetingSettings'
 import SearchOptions from './SearchSettings'
 import WallpaperOptions from './WallpaperSettings'
+import UpdatePreferences from './UpdatePreferences'
 
 const Settingsbtn = ({ preferences, setPreferences }) => {
   console.log(preferences)
@@ -15,6 +16,7 @@ const Settingsbtn = ({ preferences, setPreferences }) => {
         <GreetingOptions check={preferences.greeting} setPreferences={setPreferences} />
         <SearchOptions check={preferences.searchBar} setPreferences={setPreferences} />
         <WallpaperOptions check={preferences.weatherCur} setPreferences={setPreferences} />
+        <UpdatePreferences />
       </div>
     </StyledMenu>
   )
