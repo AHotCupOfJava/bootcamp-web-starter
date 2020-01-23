@@ -24,12 +24,21 @@ const MainPage = () => {
     ),
   })
 
+  const fromReducer = (prevState, payload) => ({ ...prevState, ...payload })
+  const [preferences, setPreferences] = useReducer(
+    fromReducer, { searchBar: true, weatherCur: true, greeting: false },
+  )
+
   if (error) {
     return `${error}`
   }
   if (loading) {
     return 'Loading...'
   }
+
+  const { sb, wc, g } = data.getViewer.preferences
+  setPreferences({ searchBar: sb, weatherCur: wc, greeting: g })
+
 
   return (
     <Page>
