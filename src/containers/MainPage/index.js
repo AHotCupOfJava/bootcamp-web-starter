@@ -45,7 +45,7 @@ const MainPage = () => {
           <UserGreeting name={data.getViewer.firstName} />) : (null)}
         {preferences.searchBar ? (
           <SearchBar />) : null}
-        <SettingsBtn preferences={preferences} setPreferences={setPreferences} />
+        <SettingsBtn preferences={data.getViewer.prefs} setPreferences={setPreferences} />
       </Container>
     </Page>
   )
