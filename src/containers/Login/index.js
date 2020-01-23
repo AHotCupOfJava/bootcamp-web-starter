@@ -45,7 +45,10 @@ const Login = () => {
         />
         <br />
         <Button type="button" onClick={login}>Log in</Button>
-        <p>Need an account? Register</p>
+        <p>
+          Need an account?
+          <a href="http://localhost:3000/register">Register</a>
+        </p>
       </Container>
     </div>
   )
