@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from '../graphql'
 import {
-  Container, Button, TextBar, Header, StyledLink,
+  Container, Button, TextBar, Header,
 } from './styles'
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [login, {
-    loading, data, error, called,
+    loading, error,
   }] = useMutation(LOGIN, {
     variables: {
       email,
@@ -44,10 +44,11 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
         />
         <br />
-        <StyledLink to="/login">
-          <Button type="button" onClick={login}>Log in</Button>
-        </StyledLink>
-        <p>Need an account? Register</p>
+        <Button type="button" onClick={login}>Log in</Button>
+        <p>
+          Need an account?
+          <a href="http://localhost:3000/register">Register</a>
+        </p>
       </Container>
     </div>
   )

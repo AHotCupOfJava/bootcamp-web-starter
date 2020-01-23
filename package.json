@@ -14,6 +14,7 @@
     "googleapis": "^47.0.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
+    "jquery": "^3.4.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",

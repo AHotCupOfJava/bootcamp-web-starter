@@ -14,6 +14,7 @@ export const Container = styled.div`
  `
 export const Header = styled.h1`
  font-family: ${({ theme }) => theme.fonts.header.family};
+ text-align: center;
  `
 export const Button = styled.button`
     width: 100px;

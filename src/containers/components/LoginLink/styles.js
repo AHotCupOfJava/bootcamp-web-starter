@@ -14,10 +14,24 @@ export const FancyButton = styled.button`
   font-weight: bold;
   font-size: 20px;
   font-family: "Arial", Arial, Sans-serif;
-  margin: 5px;
+  margin: 10px;
   &:hover {
-    background: lightgrey;
-  }
+      background: lightgrey;
+        animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+
+    @keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    }
 `
 
 export default FancyButton
