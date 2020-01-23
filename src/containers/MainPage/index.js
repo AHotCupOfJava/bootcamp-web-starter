@@ -8,7 +8,7 @@ import UserGreeting from './UserGreeting'
 import { GET_VIEWER, PREFERENCES } from './graphql'
 import { Image } from '../Welcome/styles'
 import {
-  Container, Page, TopBarWrapper,
+  Container, Page, TopBarWrapper, WeatherWrapper,
 } from './styles'
 
 const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
@@ -31,6 +31,8 @@ const MainPage = () => {
   const flickr = new Flickr('4f9c1a03cd916127c332df8c7bb5f877')
   const [weather, setWeather] = useState()
   const [image, setImage] = useState()
+  const [temp, setTemp] = useState()
+  const [description, setDescription] = useState()
 
   useEffect(() => {
     setTimeout(() => setFade(true), 500)
@@ -41,6 +43,8 @@ const MainPage = () => {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=db5bbba816b58757082ce2230c7754a6&units=imperial`)
         const data = await response.json()
         setWeather(data)
+        setTemp(data.main.temp)
+        setDescription(data.weather[0].description)
         const imgLibrary = await flickr.photos.search({
           text: `${data.weather[0].description} background`,
           extras: ['url_c', 'description'],
@@ -58,6 +62,7 @@ const MainPage = () => {
       }, () => alert('Failed to fetch weather data.'))
     }
   }, [weather])
+
 
   const [updatePrefs, { loadingPrefs, prefsError }] = useMutation(PREFERENCES, {
     variables: {
@@ -92,11 +97,21 @@ const MainPage = () => {
         alt="weather"
         fade={fade}
       />
+
       <Container>
         {preferences.greeting ? (
           <UserGreeting name={data.getViewer.firstName} />) : (null)}
+        {preferences.weatherCur ? (
+          <WeatherWrapper>
+            {temp}
+ºF with
+            {' '}
+            {description}
+          </WeatherWrapper>
+        ) : null}
         {preferences.searchBar ? (
           <SearchBar />) : null}
+
       </Container>
     </Page>
   )

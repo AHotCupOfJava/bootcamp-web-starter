@@ -33,3 +33,10 @@ export const TopBarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `
+export const WeatherWrapper = styled.p`
+  font-family: 'Trebuchet MS';
+  color: white;
+  display: flex;
+  justify-content: center;
+
+`
