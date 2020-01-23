@@ -24,13 +24,12 @@ const MainPage = () => {
     ),
   })
 
-  const [updatePrefs, { loadingPrefs, prefsError, called }] = useMutation(PREFERENCES, {
+  const [updatePrefs, { loadingPrefs, prefsError }] = useMutation(PREFERENCES, {
     variables: {
       input: preferences,
     },
   })
 
-  console.log(preferences)
 
   if (error || prefsError) {
     return `${error}`
@@ -54,7 +53,6 @@ const MainPage = () => {
           setPreferences={setPreferences}
           update={updatePrefs}
         />
-        {called ? <p>The mutation has been called!</p> : <p>the mutation has not been called...</p>}
       </Container>
     </Page>
   )
