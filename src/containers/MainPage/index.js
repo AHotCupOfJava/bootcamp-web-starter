@@ -39,10 +39,10 @@ const MainPage = () => {
     if (!weather) {
       navigator.geolocation.getCurrentPosition(async ({ coords }) => {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=db5bbba816b58757082ce2230c7754a6&units=imperial`)
-        const data = await response.json()
-        setWeather(data)
+        const weatherData = await response.json()
+        setWeather(weatherData)
         const imgLibrary = await flickr.photos.search({
-          text: `${data.weather[0].description} background`,
+          text: `${weatherData.weather[0].description} background`,
           extras: ['url_c', 'description'],
           per_page: 1,
           sort: 'relevance',
@@ -79,6 +79,11 @@ const MainPage = () => {
     <Page>
       <TopBarWrapper>
         <LogOutLink />
+        <SettingsBtn
+          preferences={data.getViewer.prefs}
+          setPreferences={setPreferences}
+          update={updatePrefs}
+        />
       </TopBarWrapper>
 
 
@@ -92,17 +97,7 @@ const MainPage = () => {
           <UserGreeting name={data.getViewer.firstName} />) : (null)}
         {preferences.searchBar ? (
           <SearchBar />) : null}
-        <SettingsBtn
-          preferences={data.getViewer.prefs}
-          setPreferences={setPreferences}
-          update={updatePrefs}
-        />
-      </TopBarWrapper>
-      <Container>
-        {preferences.greeting ? (
-          <UserGreeting name={data.getViewer.firstName} />) : (null)}
-        {preferences.searchBar ? (
-          <SearchBar />) : null}
+
       </Container>
     </Page>
   )
