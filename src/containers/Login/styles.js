@@ -57,4 +57,8 @@ export const TextBar = styled.input`
     }
 `
 
+export const Text = styled.p`
+  font-family: ${({ theme }) => theme.fonts.header.family};
+`
+
 export const StyledLink = styled(Link)``
