@@ -38,7 +38,6 @@ export const WelcomeDiv = styled.div`
     outline: 1px solid black;
     position: absolute;
     top: ${({ fade }) => (fade ? '25%' : '0%')};
-    left: 25%;
     background-color: #73C6B6;
     display: flex;
     justify-content: center;
