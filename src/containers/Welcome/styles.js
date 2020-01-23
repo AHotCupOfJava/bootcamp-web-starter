@@ -2,19 +2,29 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
+  height: 50%;
+  width: 100vw;
+  align-items: center;
   justify-content: center;
-  
+  height: 100%;
+  position: absolute;
+  top: 0px;
 `
+
 export const Text = styled.p`
-  text-indent: 25px;
-  margin: 10px;
-  width: 100px;
-  color: navy;
+  width: '400px';
+  margin: '10px 30px';
+  text-align: 'center';
+  font-size: '20px';
+  font-family: ${({ theme }) => theme.fonts.header.family};
+  display: 'flex';
+  justify-content: 'center';
+  align-items: 'center';
 `
 
 export const Image = styled.img`
     object-fit: cover;
-    width: 150%;
+    width: 100%;
     height: 100%;
     z-index: -1;
     opacity: ${({ fade }) => (fade ? '1' : '0.5')};
@@ -23,15 +33,14 @@ export const Image = styled.img`
 
 export const WelcomeDiv = styled.div`
     outline: 3px solid black;
-    position: absolute;
-    top: ${({ fade }) => (fade ? '25%' : '0%')};
-    left: 25%;
+    position: relative;
+    top: ${({ fade }) => (fade ? '10%' : '0%')};
+    padding: 10px 50px;
     background-color: #73C6B6;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 750px;
     opacity: ${({ fade }) => (fade ? '1' : '0')};
     transition: opacity 3s, top 3s;
     &:hover {

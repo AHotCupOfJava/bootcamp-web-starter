@@ -31,10 +31,6 @@ const MainPage = () => {
     return 'Loading...'
   }
 
-  const { sb, wc, g } = data.getViewer.preferences
-  setPreferences({ searchBar: sb, weatherCur: wc, greeting: g })
-
-
   return (
     <Page>
       <LogOutWrapper>
