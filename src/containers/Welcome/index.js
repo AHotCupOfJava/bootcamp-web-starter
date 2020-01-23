@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Flickr from 'flickr-sdk'
 import {
   Container, Image, WelcomeDiv, Text,
 } from './styles'
@@ -15,7 +14,7 @@ const Welcome = () => {
   }, [])
 
   return (
-    <div>
+    <Container>
       <Image
         src="https://cdn.wallpapersafari.com/64/53/DI52GS.jpg"
         alt="weather"
@@ -23,18 +22,14 @@ const Welcome = () => {
       />
       <WelcomeDiv fade={fade}>
         <Header>Introducing Your Dream Page!</Header>
-        <p style={{
-          margin: '10px 30px', textAlign: 'center', fontSize: '15px', display: 'flex', justifyContent: 'center', alignItems: 'center',
-        }}
-        >
-This is a build-your-own homepage where you can add and remove features to your liking. You can login or register below!
-        </p>
+        <Text>
+        This is a build-your-own homepage where you can add and remove features to your liking.
+        You can login or register below!
+        </Text>
         <LoginLink />
         <RegisterLink />
       </WelcomeDiv>
-
-      </Container>
-    </div>
+    </Container>
   )
 }
 

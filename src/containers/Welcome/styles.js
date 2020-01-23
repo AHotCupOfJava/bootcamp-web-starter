@@ -8,18 +8,18 @@ export const Container = styled.div`
   justify-content: center;
   height: 100%;
   position: absolute;
-  top: 0px;  
+  top: 0px;
 `
 
 export const Text = styled.p`
-  width: '400px';
-  margin: '10px 30px';
-  text-align: 'center';
-  font-size: '20px';
+  width: 400px;
+  margin: 10px 30px;
+  text-align: center;
+  font-size: 20px;
   font-family: ${({ theme }) => theme.fonts.header.family};
-  display: 'flex';
-  justify-content: 'center';
-  align-items: 'center';
+  display: flex;
+  justify-content: center;
+  align-items: center;
   `
 
 export const Image = styled.img`
@@ -43,6 +43,7 @@ export const WelcomeDiv = styled.div`
     flex-direction: column;
     opacity: ${({ fade }) => (fade ? '1' : '0')};
     transition: opacity 3s, top 3s;
+    padding: 20px;
 `
 export const tempButton = styled.button`
     position: absolute;

@@ -5,7 +5,9 @@ import SettingsBtn from './Settingsbtn'
 import LogOutLink from './LogOut'
 import UserGreeting from './UserGreeting'
 import { GET_VIEWER, PREFERENCES } from './graphql'
-import { Container, Page, LogOutWrapper } from './styles'
+import {
+  Container, Page, TopBarWrapper,
+} from './styles'
 
 const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
 
@@ -40,19 +42,19 @@ const MainPage = () => {
 
   return (
     <Page>
-      <LogOutWrapper>
+      <TopBarWrapper>
         <LogOutLink />
-      </LogOutWrapper>
-      <Container>
-        {preferences.greeting ? (
-          <UserGreeting name={data.getViewer.firstName} />) : (null)}
-        {preferences.searchBar ? (
-          <SearchBar />) : null}
         <SettingsBtn
           preferences={data.getViewer.prefs}
           setPreferences={setPreferences}
           update={updatePrefs}
         />
+      </TopBarWrapper>
+      <Container>
+        {preferences.greeting ? (
+          <UserGreeting name={data.getViewer.firstName} />) : (null)}
+        {preferences.searchBar ? (
+          <SearchBar />) : null}
       </Container>
     </Page>
   )
