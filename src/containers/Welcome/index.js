@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Flickr from 'flickr-sdk'
-import { assertCompositeType } from 'graphql'
-import Jquery from 'jquery'
 import {
-  Container, Image, WelcomeDiv, tempButton,
+  Image, WelcomeDiv,
 } from './styles'
 import LoginLink from '../components/LoginLink'
 import RegisterLink from '../components/RegisterLink'
@@ -14,8 +12,6 @@ const Welcome = () => {
   const flickr = new Flickr('4f9c1a03cd916127c332df8c7bb5f877')
   const [weather, setWeather] = useState()
   const [image, setImage] = useState()
-  const [x, setX] = useState()
-  const [y, setY] = useState()
 
 
   useEffect(() => {
@@ -36,13 +32,13 @@ const Welcome = () => {
           sort: 'relevance',
           tags: 'desktop wallpaper',
         })
-        console.log(data)
-        console.log(data.weather[0].description)
+
         if (imgLibrary.body.photos.photo[0].url_c) {
           setImage(imgLibrary.body.photos.photo[0].url_c)
         } else {
           setImage('https://cdn.wallpapersafari.com/64/53/DI52GS.jpg')
         }
+      // eslint-disable-next-line no-alert
       }, () => alert('Failed to fetch weather data.'))
     }
   }, [weather])
@@ -60,7 +56,8 @@ const Welcome = () => {
           width: '300px', margin: '10px 30px', textAlign: 'center', fontSize: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center',
         }}
         >
-This is a build-your-own homepage where you can add and remove features to your liking. You can login or register below!
+          This is a build-your-own homepage where you can add and remove features to your liking.
+          You can login or register below!
         </p>
         <LoginLink />
         <RegisterLink />
