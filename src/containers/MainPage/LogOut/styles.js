@@ -20,4 +20,6 @@ export const Button = styled.button`
         background: ${({ theme }) => theme.colors.hovered};
         color:#FFFFFF;
     }
+
+
 `

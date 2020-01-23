@@ -23,6 +23,9 @@ export const Text = styled.p`
 `
 
 export const Image = styled.img`
+    position: absolute;
+    top: 0px;
+    right: 0px;
     object-fit: cover;
     width: 100%;
     height: 100%;

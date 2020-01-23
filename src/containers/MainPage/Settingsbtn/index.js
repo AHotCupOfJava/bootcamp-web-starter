@@ -11,7 +11,9 @@ const Settingsbtn = ({ preferences, setPreferences, update }) => (
       <GreetingOptions check={preferences.greeting} setPreferences={setPreferences} />
       <SearchOptions check={preferences.searchBar} setPreferences={setPreferences} />
       <WallpaperOptions check={preferences.weatherCur} setPreferences={setPreferences} />
+
       <button type="button" onClick={update}>Set Preferences</button>
+
     </div>
   </StyledMenu>
 )
