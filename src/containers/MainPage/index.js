@@ -1,10 +1,12 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState, useEffect } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
+import Flickr from 'flickr-sdk'
 import SearchBar from './Search'
 import SettingsBtn from './Settingsbtn'
 import LogOutLink from './LogOut'
 import UserGreeting from './UserGreeting'
 import { GET_VIEWER, PREFERENCES } from './graphql'
+import { Image } from '../Welcome/styles'
 import {
   Container, Page, TopBarWrapper,
 } from './styles'
@@ -25,6 +27,37 @@ const MainPage = () => {
       },
     ),
   })
+  const [fade, setFade] = useState(false)
+  const flickr = new Flickr('4f9c1a03cd916127c332df8c7bb5f877')
+  const [weather, setWeather] = useState()
+  const [image, setImage] = useState()
+
+  useEffect(() => {
+    setTimeout(() => setFade(true), 500)
+  }, [])
+  useEffect(() => {
+    if (!weather) {
+      navigator.geolocation.getCurrentPosition(async ({ coords }) => {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=db5bbba816b58757082ce2230c7754a6&units=imperial`)
+        const data = await response.json()
+        setWeather(data)
+        const imgLibrary = await flickr.photos.search({
+          text: `${data.weather[0].description} background`,
+          extras: ['url_c', 'description'],
+          per_page: 1,
+          sort: 'relevance',
+          tags: 'desktop wallpaper',
+        })
+
+        if (imgLibrary.body.photos.photo[0].url_c) {
+          setImage(imgLibrary.body.photos.photo[0].url_c)
+        } else {
+          setImage('https://cdn.wallpapersafari.com/64/53/DI52GS.jpg')
+        }
+      // eslint-disable-next-line no-alert
+      }, () => alert('Failed to fetch weather data.'))
+    }
+  }, [weather])
 
   const [updatePrefs, { loadingPrefs, prefsError }] = useMutation(PREFERENCES, {
     variables: {
@@ -41,9 +74,24 @@ const MainPage = () => {
   }
 
   return (
+
+
     <Page>
       <TopBarWrapper>
         <LogOutLink />
+      </TopBarWrapper>
+
+
+      <Image
+        src={image}
+        alt="weather"
+        fade={fade}
+      />
+      <Container>
+        {preferences.greeting ? (
+          <UserGreeting name={data.getViewer.firstName} />) : (null)}
+        {preferences.searchBar ? (
+          <SearchBar />) : null}
         <SettingsBtn
           preferences={data.getViewer.prefs}
           setPreferences={setPreferences}
