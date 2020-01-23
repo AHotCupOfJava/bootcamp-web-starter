@@ -15,3 +15,13 @@ const GET_VIEWER = gql`
   }
 `
 export default GET_VIEWER
+
+export const PREFERENCES = gql`
+    mutation PREFERENCES ($input: NewPrefsInput!){
+    updatePreferences(input: $input){
+        searchBar,
+        weatherCur,
+        greeting,
+    }
+    }
+`

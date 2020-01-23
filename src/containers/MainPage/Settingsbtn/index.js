@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledMenu } from './styles'
+import { StyledMenu, Button } from './styles'
 import GreetingOptions from './GreetingSettings'
 import SearchOptions from './SearchSettings'
 import WallpaperOptions from './WallpaperSettings'

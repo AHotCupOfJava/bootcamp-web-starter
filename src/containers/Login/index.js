@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from '../graphql'
 import {
-  Container, Button, TextBar, Header, Text,
+  Container, Button, TextBar, Header, Text, Anchor,
 } from './styles'
 
 const Login = () => {
@@ -55,7 +55,7 @@ const Login = () => {
         <Text>
           Need an account?
           {' '}
-          <a href="http://localhost:3000/register">Register</a>
+          <Anchor href="http://localhost:3000/register">Register</Anchor>
         </Text>
       </Container>
     </div>
