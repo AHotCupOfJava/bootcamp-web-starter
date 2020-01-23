@@ -27,12 +27,3 @@ export const REGISTER = gql`
     }
     }
 `
-export const PREFERENCES = gql`
-    mutation PREFERENCES ($input: NewPrefsInput!){
-    updatePreferences(input: $input){
-        searchBar,
-        weatherCur,
-        greeting,
-    }
-    }
-`
