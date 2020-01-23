@@ -24,11 +24,6 @@ const MainPage = () => {
     ),
   })
 
-  const fromReducer = (prevState, payload) => ({ ...prevState, ...payload })
-  const [preferences, setPreferences] = useReducer(
-    fromReducer, { searchBar: true, weatherCur: true, greeting: false },
-  )
-
   if (error) {
     return `${error}`
   }
