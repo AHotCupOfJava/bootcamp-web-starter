@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Flickr from 'flickr-sdk'
 import {
-  Image, WelcomeDiv,
+  Container, Image, WelcomeDiv, Text,
 } from './styles'
 import LoginLink from '../components/LoginLink'
 import RegisterLink from '../components/RegisterLink'
@@ -30,7 +30,7 @@ const Welcome = () => {
           extras: ['url_c', 'description'],
           per_page: 1,
           sort: 'relevance',
-          tags: 'desktop wallpaper',
+          tags: 'landscape',
         })
 
         if (imgLibrary.body.photos.photo[0].url_c) {
@@ -44,25 +44,27 @@ const Welcome = () => {
   }, [weather])
 
   return (
-    <div style={{ height: window.innerHeight }}>
+    <div>
       <Image
         src={image}
         alt="weather"
         fade={fade}
       />
-      <WelcomeDiv fade={fade}>
-        <Header>Introducing Dream Page!</Header>
-        <p style={{
-          width: '300px', margin: '10px 30px', textAlign: 'center', fontSize: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center',
-        }}
-        >
+      <Container>
+        <WelcomeDiv fade={fade}>
+          <Header>Introducing Dream Page!</Header>
+          <Text style={{
+            width: '300px', margin: '10px 30px', textAlign: 'center', fontSize: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center',
+          }}
+          >
           This is a build-your-own homepage where you can add and remove features to your liking.
           You can login or register below!
-        </p>
-        <LoginLink />
-        <RegisterLink />
-      </WelcomeDiv>
+          </Text>
+          <LoginLink />
+          <RegisterLink />
+        </WelcomeDiv>
 
+      </Container>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import FancyButton, { StyledLink } from './styles'
+import { FancyButton, StyledLink } from './styles'
 
 
 const LoginLink = () => (

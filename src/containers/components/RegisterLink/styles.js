@@ -13,7 +13,7 @@ export const FancyButton = styled.button`
   height: 40px;
   font-weight: bold;
   font-size: 20px;
-  font-family: "Arial", Arial, Sans-serif;
+  font-family: ${({ theme }) => theme.fonts.header.family};
   margin: 10px;
   &:hover {
       background: lightgrey;
