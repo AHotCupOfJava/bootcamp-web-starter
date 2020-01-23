@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: center;
   height: 100%;
   position: absolute;
-  top: 0px;
+  top: 0px;  
 `
 
 export const Text = styled.p`
@@ -20,7 +20,7 @@ export const Text = styled.p`
   display: 'flex';
   justify-content: 'center';
   align-items: 'center';
-`
+  `
 
 export const Image = styled.img`
     position: absolute;
@@ -35,10 +35,10 @@ export const Image = styled.img`
 `
 
 export const WelcomeDiv = styled.div`
-    outline: 3px solid black;
-    position: relative;
-    top: ${({ fade }) => (fade ? '10%' : '0%')};
-    padding: 10px 50px;
+    outline: 1px solid black;
+    position: absolute;
+    top: ${({ fade }) => (fade ? '25%' : '0%')};
+    left: 25%;
     background-color: #73C6B6;
     display: flex;
     justify-content: center;
@@ -46,9 +46,6 @@ export const WelcomeDiv = styled.div`
     flex-direction: column;
     opacity: ${({ fade }) => (fade ? '1' : '0')};
     transition: opacity 3s, top 3s;
-    &:hover {
-        left: ${({ xCoord }) => xCoord}
-    }
 `
 export const tempButton = styled.button`
     position: absolute;

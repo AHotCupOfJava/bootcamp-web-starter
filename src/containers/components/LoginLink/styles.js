@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 export const StyledLink = styled(Link)``
 
 export const FancyButton = styled.button`
+    mix-blend-mode: lighten;
   color: black;
   background: white;
   border-color: black;
