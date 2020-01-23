@@ -3,13 +3,15 @@ import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from '../graphql'
 import {
-  Container, Button, TextBar, Header,
+  Container, Button, TextBar, Header, Text,
 } from './styles'
 
 const Login = () => {
   const history = useHistory()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errorMessage, setError] = useState('')
+
   const [login, {
     loading, error,
   }] = useMutation(LOGIN, {
@@ -21,13 +23,12 @@ const Login = () => {
       localStorage.setItem('token', token)
       history.push('/home')
     },
+    onError: (({ graphQLErrors }) => {
+      if (graphQLErrors) {
+        setError(graphQLErrors[0].message)
+      }
+    }),
   })
-
-  if (loading) return <p> Loading ... </p>
-  if (error) {
-    return (<p>Error</p>)
-  }
-  // apply font change
 
   return (
     <div>
@@ -45,10 +46,17 @@ const Login = () => {
         />
         <br />
         <Button type="button" onClick={login}>Log in</Button>
-        <p>
+
+        {loading ? <Text>Loading...</Text> : <></>}
+        {error ? (
+          <Text>{errorMessage}</Text>
+        ) : <></>}
+
+        <Text>
           Need an account?
+          {' '}
           <a href="http://localhost:3000/register">Register</a>
-        </p>
+        </Text>
       </Container>
     </div>
   )

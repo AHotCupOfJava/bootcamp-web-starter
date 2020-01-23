@@ -4,7 +4,7 @@ import { StyledHeader } from './styles'
 
 const UserGreeting = ({ name }) => (
   <StyledHeader>
-Hello
+Hello,
     {' '}
     {' '}
     {name}
