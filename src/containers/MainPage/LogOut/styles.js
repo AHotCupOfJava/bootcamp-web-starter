@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const StyledLink = styled(Link)``
+export const StyledLink = styled(Link)`
+    padding: 15px;
+`
 
 export const Button = styled.button`
     width: 100px;
-    height: 40px;
+    height: 30px;
     font-size: ${({ theme }) => theme.fonts.body.larger};
     text-align: center;
     background: transparent;
@@ -14,7 +16,6 @@ export const Button = styled.button`
     border: 2px solid #FFFFFF;
     margin: 5px;
     color: ${({ theme }) => theme.colors.link};
-    padding: 0.25em 1em;
 
     &:hover {
         background: ${({ theme }) => theme.colors.hovered};

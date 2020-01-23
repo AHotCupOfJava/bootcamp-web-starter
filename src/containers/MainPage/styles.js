@@ -20,10 +20,9 @@ export const Page = styled.div`
     font-family: 'Trebuchet MS';
 `
 
-// LogOutWrapper breaks the logout button
-export const LogOutWrapper = styled.div`
-  background-color: whitesmoke;
-  width: auto;
-  height: auto
-
+export const TopBarWrapper = styled.div`
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
 `

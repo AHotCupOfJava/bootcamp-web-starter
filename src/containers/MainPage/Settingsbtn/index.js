@@ -1,19 +1,17 @@
 import React from 'react'
-import { StyledMenu } from './styles'
+import { StyledMenu, Button, ButtonSmall } from './styles'
 import GreetingOptions from './GreetingSettings'
 import SearchOptions from './SearchSettings'
-import WallpaperOptions from './WallpaperSettings'
+import CurrentWeather from './CurrentWeather'
 
 const Settingsbtn = ({ preferences, setPreferences, update }) => (
   <StyledMenu>
-    <button type="button">Settings</button>
+    <Button type="button">Settings</Button>
     <div>
       <GreetingOptions check={preferences.greeting} setPreferences={setPreferences} />
       <SearchOptions check={preferences.searchBar} setPreferences={setPreferences} />
-      <WallpaperOptions check={preferences.weatherCur} setPreferences={setPreferences} />
-
-      <button type="button" onClick={update}>Set Preferences</button>
-
+      <CurrentWeather check={preferences.weatherCur} setPreferences={setPreferences} />
+      <ButtonSmall type="button" onClick={update}>Set Preferences</ButtonSmall>
     </div>
   </StyledMenu>
 )
