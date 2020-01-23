@@ -19,6 +19,7 @@ const theme = {
       color: '#000000',
       headerweight: 500,
       size: '15px',
+      smaller: '10px',
       larger: '16px',
       fontfamily: 'antic',
     },

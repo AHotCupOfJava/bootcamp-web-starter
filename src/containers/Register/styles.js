@@ -54,3 +54,7 @@ export const TextBar = styled.input`
   color: #000000;
     }
 `
+
+export const Text = styled.p`
+  font-family: ${({ theme }) => theme.fonts.header.family};
+`

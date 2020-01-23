@@ -12,15 +12,15 @@ export const Container = styled.div`
 `
 
 export const Text = styled.p`
-  width: '400px';
-  margin: '10px 30px';
-  text-align: 'center';
-  font-size: '20px';
+  width: 400px;
+  margin: 10px 30px;
+  text-align: center;
+  font-size: 20px;
   font-family: ${({ theme }) => theme.fonts.header.family};
-  display: 'flex';
-  justify-content: 'center';
-  align-items: 'center';
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `
 
 export const Image = styled.img`
     object-fit: cover;
@@ -32,10 +32,10 @@ export const Image = styled.img`
 `
 
 export const WelcomeDiv = styled.div`
-    outline: 3px solid black;
-    position: relative;
-    top: ${({ fade }) => (fade ? '10%' : '0%')};
-    padding: 10px 50px;
+    outline: 1px solid black;
+    position: absolute;
+    top: ${({ fade }) => (fade ? '25%' : '0%')};
+    left: 25%;
     background-color: #73C6B6;
     display: flex;
     justify-content: center;
@@ -43,9 +43,7 @@ export const WelcomeDiv = styled.div`
     flex-direction: column;
     opacity: ${({ fade }) => (fade ? '1' : '0')};
     transition: opacity 3s, top 3s;
-    &:hover {
-        left: ${({ xCoord }) => xCoord}
-    }
+    padding: 20px;
 `
 export const tempButton = styled.button`
     position: absolute;

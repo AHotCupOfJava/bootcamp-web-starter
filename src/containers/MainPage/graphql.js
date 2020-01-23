@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-const GET_VIEWER = gql`
+export const GET_VIEWER = gql`
   query GET_VIEWER {
     getViewer {
       username
@@ -14,14 +14,12 @@ const GET_VIEWER = gql`
     }
   }
 `
-export default GET_VIEWER
-
 export const PREFERENCES = gql`
-    mutation PREFERENCES ($input: NewPrefsInput!){
+  mutation PREFERENCES ($input: NewPrefsInput!){
     updatePreferences(input: $input){
-        searchBar,
-        weatherCur,
-        greeting,
+      searchBar,
+      weatherCur,
+      greeting,
     }
-    }
+  }
 `

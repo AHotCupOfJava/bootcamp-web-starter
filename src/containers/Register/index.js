@@ -1,14 +1,16 @@
-import React, { useReducer } from 'react'
+import React, { useState, useReducer } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { REGISTER } from '../graphql'
 import {
-  Container, Header, TextBar, Button,
+  Container, Header, TextBar, Button, Text,
 } from './styles'
 
 const Register = () => {
   const history = useHistory()
   const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
+
+  const [errorMessage, setError] = useState('')
 
   const [form, setForm] = useReducer(formReducer,
     {
@@ -25,10 +27,12 @@ const Register = () => {
       localStorage.setItem('token', token)
       history.push('/home')
     },
+    onError: (({ graphQLErrors }) => {
+      if (graphQLErrors) {
+        setError(graphQLErrors[0].message)
+      }
+    }),
   })
-
-  if (error) return `Error: ${error}`
-  if (loading) return 'Loading...'
 
   return (
     <div>
@@ -78,6 +82,10 @@ const Register = () => {
         <Button type="button" onClick={register}>
           Add User
         </Button>
+
+        {loading ? <Text>Loading...</Text> : <></>}
+        {error ? <Text>{errorMessage}</Text> : <></>}
+
       </Container>
     </div>
   )

@@ -1,11 +1,13 @@
 import React, { useReducer } from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 import SearchBar from './Search'
 import SettingsBtn from './Settingsbtn'
 import LogOutLink from './LogOut'
 import UserGreeting from './UserGreeting'
-import GET_VIEWER from './graphql'
-import { Container, Page, LogOutWrapper } from './styles'
+import { GET_VIEWER, PREFERENCES } from './graphql'
+import {
+  Container, Page, TopBarWrapper,
+} from './styles'
 
 const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
 
@@ -24,24 +26,35 @@ const MainPage = () => {
     ),
   })
 
-  if (error) {
+  const [updatePrefs, { loadingPrefs, prefsError }] = useMutation(PREFERENCES, {
+    variables: {
+      input: preferences,
+    },
+  })
+
+
+  if (error || prefsError) {
     return `${error}`
   }
-  if (loading) {
+  if (loading || loadingPrefs) {
     return 'Loading...'
   }
 
   return (
     <Page>
-      <LogOutWrapper>
+      <TopBarWrapper>
         <LogOutLink />
-      </LogOutWrapper>
+        <SettingsBtn
+          preferences={data.getViewer.prefs}
+          setPreferences={setPreferences}
+          update={updatePrefs}
+        />
+      </TopBarWrapper>
       <Container>
         {preferences.greeting ? (
           <UserGreeting name={data.getViewer.firstName} />) : (null)}
         {preferences.searchBar ? (
           <SearchBar />) : null}
-        <SettingsBtn preferences={data.getViewer.prefs} setPreferences={setPreferences} />
       </Container>
     </Page>
   )
