@@ -79,6 +79,11 @@ const MainPage = () => {
     <Page>
       <TopBarWrapper>
         <LogOutLink />
+        <SettingsBtn
+          preferences={data.getViewer.prefs}
+          setPreferences={setPreferences}
+          update={updatePrefs}
+        />
       </TopBarWrapper>
 
 
@@ -87,17 +92,6 @@ const MainPage = () => {
         alt="weather"
         fade={fade}
       />
-      <Container>
-        {preferences.greeting ? (
-          <UserGreeting name={data.getViewer.firstName} />) : (null)}
-        {preferences.searchBar ? (
-          <SearchBar />) : null}
-        <SettingsBtn
-          preferences={data.getViewer.prefs}
-          setPreferences={setPreferences}
-          update={updatePrefs}
-        />
-      </TopBarWrapper>
       <Container>
         {preferences.greeting ? (
           <UserGreeting name={data.getViewer.firstName} />) : (null)}
