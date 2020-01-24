@@ -8,5 +8,8 @@ const options = [
   { value: 'vanilla', label: 'Bottom' },
 ]
 const WidgetLocation = () => (
-  <Select options={options} onChange={console.log{'yeah!'}} />
+  <Select options={options} onChange={console.log('yeah!')} />
 )
+
+
+export default WidgetLocation
