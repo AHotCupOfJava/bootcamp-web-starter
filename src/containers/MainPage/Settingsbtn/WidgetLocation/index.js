@@ -8,12 +8,10 @@ const WidgetLocation = ({ orientation, setOrientation }) => {
     { value: 'center', label: 'Center' },
     { value: 'flex-end', label: 'Bottom' },
   ]
-  const changeOrientation = val => {
-    setOrientation(val.value)
-  }
+
 
   return (
-    <Select options={options} onChange={changeOrientation} />)
+    <Select options={options} onChange={({ value }) => setOrientation(value)} />)
 }
 
 
