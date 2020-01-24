@@ -19,6 +19,13 @@ const MainPage = () => {
   )
 
   const { loading, error, data } = useQuery(GET_VIEWER, {
+    update: (client, { data: { getViewer } }) => {
+      try {
+        client.resetQuery(getViewer)
+      } catch (error) {
+
+      }
+    },
     onCompleted: ({ getViewer }) => setPreferences(
       {
         searchBar: getViewer.prefs.searchBar,
@@ -27,6 +34,7 @@ const MainPage = () => {
       },
     ),
   })
+  console.log(localStorage.getItem('token'))
   const [fade, setFade] = useState(false)
   const flickr = new Flickr('4f9c1a03cd916127c332df8c7bb5f877')
   const [weather, setWeather] = useState()
@@ -77,7 +85,7 @@ const MainPage = () => {
   if (loading || loadingPrefs) {
     return 'Loading...'
   }
-
+  console.log(preferences)
   return (
 
 

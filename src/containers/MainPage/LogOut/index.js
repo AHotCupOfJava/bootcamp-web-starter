@@ -1,5 +1,7 @@
 import React from 'react'
+import { ApolloClient } from 'apollo-client'
 import { StyledLink, Button } from './styles'
+
 
 const LogOutLink = () => (
 
