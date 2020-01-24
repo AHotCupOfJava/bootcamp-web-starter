@@ -9,6 +9,7 @@ const WidgetLocation = ({ setPreferences }) => {
     { value: 'FLEX_END', label: 'Bottom' },
   ]
 
+<<<<<<< HEAD
   const customStyles = {
     option: (provided, state) => ({
       color: state.isSelected ? 'gray' : 'black',
@@ -24,6 +25,11 @@ const WidgetLocation = ({ setPreferences }) => {
 
   return (
     <StyledSelect options={options} styles={customStyles} placeholder="Widget alignment..." onChange={e => setPreferences({ orientation: e.value })} />)
+=======
+
+  return (
+    <Select options={options} onChange={({ value }) => setOrientation(value)} />)
+>>>>>>> 20d6ca6c26d39e827780d5266caf16f6032520b0
 }
 
 
