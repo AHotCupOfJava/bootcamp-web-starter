@@ -8,7 +8,7 @@ import UserGreeting from './UserGreeting'
 import { GET_VIEWER, PREFERENCES } from './graphql'
 import { Image } from '../Welcome/styles'
 import {
-  Container, Page, TopBarWrapper, WeatherWrapper,
+  Container, Page, TopBarWrapper, WeatherWrapper, Wrapper,
 } from './styles'
 
 const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
@@ -117,11 +117,13 @@ const MainPage = () => {
     <Page>
       <TopBarWrapper>
         <LogOutLink />
-        <SettingsBtn
-          preferences={data.getViewer.prefs}
-          setPreferences={setPreferences}
-          update={updatePrefs}
-        />
+        <Wrapper>
+          <SettingsBtn
+            preferences={data.getViewer.prefs}
+            setPreferences={setPreferences}
+            update={updatePrefs}
+          />
+        </Wrapper>
       </TopBarWrapper>
 
 
