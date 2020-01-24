@@ -8,7 +8,7 @@ import UserGreeting from './UserGreeting'
 import { GET_VIEWER, PREFERENCES } from './graphql'
 import { Image } from '../Welcome/styles'
 import {
-  Container, Page, TopBarWrapper, WeatherWrapper,
+  Container, Page, TopBarWrapper, WeatherWrapper, Wrapper,
 } from './styles'
 
 const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
@@ -101,19 +101,20 @@ const MainPage = () => {
       />
 
       <Container>
-        {preferences.greeting ? (
-          <UserGreeting name={data.getViewer.firstName} />) : (null)}
-        {preferences.weatherCur ? (
-          <WeatherWrapper>
-            {temp}
+        <Wrapper>
+          {preferences.greeting ? (
+            <UserGreeting name={data.getViewer.firstName} />) : (null)}
+          {preferences.weatherCur ? (
+            <WeatherWrapper>
+              {temp}
 ºF with
-            {' '}
-            {description}
-          </WeatherWrapper>
-        ) : null}
-        {preferences.searchBar ? (
-          <SearchBar />) : null}
-
+              {' '}
+              {description}
+            </WeatherWrapper>
+          ) : null}
+          {preferences.searchBar ? (
+            <SearchBar />) : null}
+        </Wrapper>
       </Container>
     </Page>
   )

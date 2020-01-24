@@ -65,4 +65,11 @@ export const Anchor = styled.a`
   color: #9473c6;
 `
 
+export const TopBarWrapper = styled.div`
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: start;
+`
+
 export const StyledLink = styled(Link)``

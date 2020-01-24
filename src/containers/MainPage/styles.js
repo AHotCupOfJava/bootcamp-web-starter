@@ -35,7 +35,7 @@ export const TopBarWrapper = styled.div`
 `
 export const WeatherWrapper = styled.p`
   font-family: 'Trebuchet MS';
-  color: white;
+  color: black;
   display: flex;
   justify-content: center;
 
