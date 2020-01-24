@@ -18,6 +18,7 @@
     "node-google-calendar": "^1.1.1",
     "react": "^16.11.0",
     "react-animated-background": "^1.0.3",
+    "react-clear-cache": "^1.0.26",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",

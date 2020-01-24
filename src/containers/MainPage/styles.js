@@ -3,10 +3,10 @@ import styled from 'styled-components'
 export const Container = styled.div`
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
   font-family: 'Trebuchet MS';
 `

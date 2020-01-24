@@ -15,7 +15,9 @@ const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
 
 const MainPage = () => {
   const [preferences, setPreferences] = useReducer(
-    formReducer, { searchBar: true, weatherCur: true, greeting: true },
+    formReducer, {
+      searchBar: true, weatherCur: true, greeting: true, orientation: 'CENTER',
+    },
   )
 
   const { loading, error, data } = useQuery(GET_VIEWER, {
@@ -24,6 +26,7 @@ const MainPage = () => {
         searchBar: getViewer.prefs.searchBar,
         weatherCur: getViewer.prefs.weatherCur,
         greeting: getViewer.prefs.greeting,
+        orientation: getViewer.prefs.orientation,
       },
     ),
   })
@@ -41,12 +44,12 @@ const MainPage = () => {
     if (!weather) {
       navigator.geolocation.getCurrentPosition(async ({ coords }) => {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=db5bbba816b58757082ce2230c7754a6&units=imperial`)
-        const data = await response.json()
-        setWeather(data)
-        setTemp(data.main.temp)
-        setDescription(data.weather[0].description)
+        const weatherData = await response.json()
+        setWeather(weatherData)
+        setTemp(weatherData.main.temp)
+        setDescription(weatherData.weather[0].description)
         const imgLibrary = await flickr.photos.search({
-          text: `${data.weather[0].description} background`,
+          text: `${weatherData.weather[0].description} background`,
           extras: ['url_c', 'description'],
           per_page: 1,
           sort: 'relevance',
@@ -68,6 +71,17 @@ const MainPage = () => {
     variables: {
       input: preferences,
     },
+    update: (client, { data: { updatePreferences } }) => {
+      try {
+        const currentData = client.readQuery({ query: GET_VIEWER })
+
+        currentData.getViewer.prefs = updatePreferences
+
+        client.writeQuery({ query: GET_VIEWER, data: currentData })
+      } catch (e) {
+        throw new Error(e)
+      }
+    },
   })
 
 
@@ -77,6 +91,17 @@ const MainPage = () => {
   if (loading || loadingPrefs) {
     return 'Loading...'
   }
+
+  const orientation = preferences.orientation.toLowerCase()
+  let orient = ''
+  if (orientation === 'center') {
+    orient = 'center'
+  } else if (orientation === 'flex_start') {
+    orient = 'flex-start'
+  } else {
+    orient = 'flex-end'
+  }
+
 
   return (
 
@@ -100,21 +125,20 @@ const MainPage = () => {
         fade={fade}
       />
 
-      <Container>
-        <Wrapper>
-          {preferences.greeting ? (
-            <UserGreeting name={data.getViewer.firstName} />) : (null)}
-          {preferences.weatherCur ? (
-            <WeatherWrapper>
-              {temp}
-ºF with
-              {' '}
-              {description}
-            </WeatherWrapper>
-          ) : null}
-          {preferences.searchBar ? (
-            <SearchBar />) : null}
-        </Wrapper>
+      <Container style={{ justifyContent: orient }}>
+        {preferences.greeting ? (
+          <UserGreeting name={data.getViewer.firstName} />) : (null)}
+        {preferences.weatherCur ? (
+          <WeatherWrapper>
+            {temp}
+            ºF with
+            {' '}
+            {description}
+          </WeatherWrapper>
+        ) : null}
+        {preferences.searchBar ? (
+          <SearchBar />) : null}
+
       </Container>
     </Page>
   )
