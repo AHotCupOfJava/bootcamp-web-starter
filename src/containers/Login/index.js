@@ -32,39 +32,38 @@ const Login = () => {
   })
 
   return (
-    <div>
-      <Container>
-        <TopBarWrapper>
-          <Home />
-        </TopBarWrapper>
-        <Header>Log in</Header>
+    <Container>
+      <TopBarWrapper>
+        <Home />
+      </TopBarWrapper>
 
-        <br />
+      <Header>Log in</Header>
 
-        <TextBar type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <br />
-        <TextBar
-          type="password"
-          id="myInput"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <br />
-        <Button name="myBtn" type="button" onClick={login}>Log in</Button>
+      <br />
 
-        {loading ? <Text>Loading...</Text> : <></>}
-        {error ? (
-          <Text>{errorMessage}</Text>
-        ) : <></>}
+      <TextBar type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+      <br />
+      <TextBar
+        type="password"
+        id="myInput"
+        placeholder="Password"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+      />
+      <br />
+      <Button name="myBtn" type="button" onClick={login}>Log in</Button>
 
-        <Text>
+      {loading ? <Text>Loading...</Text> : <></>}
+      {error ? (
+        <Text>{errorMessage}</Text>
+      ) : <></>}
+
+      <Text>
           Need an account?
-          {' '}
-          <Anchor href="http://localhost:3000/register">Register</Anchor>
-        </Text>
-      </Container>
-    </div>
+        {' '}
+        <Anchor href="http://localhost:3000/register">Register</Anchor>
+      </Text>
+    </Container>
   )
 }
 

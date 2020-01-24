@@ -49,3 +49,12 @@ export const ButtonSmall = styled.button`
         color:#FFFFFF;
     }
 `
+
+export const Wrapper = styled.div`
+  background-color: rgba(256,256,256,0.5);
+  width: auto;
+  height: auto;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+`

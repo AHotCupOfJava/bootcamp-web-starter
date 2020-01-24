@@ -110,13 +110,11 @@ const MainPage = () => {
     <Page>
       <TopBarWrapper>
         <LogOutLink />
-        <Wrapper>
-          <SettingsBtn
-            preferences={data.getViewer.prefs}
-            setPreferences={setPreferences}
-            update={updatePrefs}
-          />
-        </Wrapper>
+        <SettingsBtn
+          preferences={data.getViewer.prefs}
+          setPreferences={setPreferences}
+          update={updatePrefs}
+        />
       </TopBarWrapper>
 
 
@@ -127,19 +125,20 @@ const MainPage = () => {
       />
 
       <Container style={{ justifyContent: orient }}>
-        {preferences.greeting ? (
-          <UserGreeting name={data.getViewer.firstName} />) : (null)}
-        {preferences.weatherCur ? (
-          <WeatherWrapper>
-            {temp}
+        <Wrapper>
+          {preferences.greeting ? (
+            <UserGreeting name={data.getViewer.firstName} />) : (null)}
+          {preferences.weatherCur ? (
+            <WeatherWrapper>
+              {temp}
             ºF with
-            {' '}
-            {description}
-          </WeatherWrapper>
-        ) : null}
-        {preferences.searchBar ? (
-          <SearchBar />) : null}
-
+              {' '}
+              {description}
+            </WeatherWrapper>
+          ) : null}
+          {preferences.searchBar ? (
+            <SearchBar />) : null}
+        </Wrapper>
       </Container>
     </Page>
   )

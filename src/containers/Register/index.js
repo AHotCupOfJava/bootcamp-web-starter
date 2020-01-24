@@ -2,8 +2,9 @@ import React, { useState, useReducer } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/react-hooks'
 import { REGISTER } from '../graphql'
+import Home from './Home'
 import {
-  Container, Header, TextBar, Button, Text,
+  Container, Header, TextBar, Button, Text, TopBarWrapper,
 } from './styles'
 
 const Register = () => {
@@ -37,6 +38,11 @@ const Register = () => {
   return (
     <div>
       <Container>
+
+        <TopBarWrapper>
+          <Home />
+        </TopBarWrapper>
+
         <Header>Register</Header>
 
         <br />

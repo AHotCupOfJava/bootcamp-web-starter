@@ -58,3 +58,11 @@ export const TextBar = styled.input`
 export const Text = styled.p`
   font-family: ${({ theme }) => theme.fonts.header.family};
 `
+
+export const TopBarWrapper = styled.div`
+  width: 100vw;
+  height: auto;
+  position: fixed;
+  top: 0px;
+  margin: 15px;
+`

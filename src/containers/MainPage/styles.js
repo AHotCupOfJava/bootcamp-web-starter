@@ -6,16 +6,14 @@ export const Container = styled.div`
   height: 80vh;
   display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
   flex-direction: column;
   font-family: 'Trebuchet MS';
 `
 
 export const Wrapper = styled.div`
-  background-color: whitesmoke;
-  opacity: 0.5;
-  width: auto;
-  height: auto;
+  background-color: rgba(256,256,256,0.5);
+  width: 350px;
+  height: 200px;
   padding: 15px;
   text-align: center;
   border-radius: 10px;
@@ -35,7 +33,7 @@ export const TopBarWrapper = styled.div`
 `
 export const WeatherWrapper = styled.p`
   font-family: 'Trebuchet MS';
-  color: black;
+  color: white;
   display: flex;
   justify-content: center;
 
