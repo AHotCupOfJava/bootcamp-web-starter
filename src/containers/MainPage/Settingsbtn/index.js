@@ -8,7 +8,7 @@ import CurrentWeather from './CurrentWeather'
 import WidgetLocation from './WidgetLocation'
 
 const Settingsbtn = ({
-  preferences, setPreferences, update, setOrientation,
+  preferences, setPreferences, update, setOrientation, orientation,
 }) => (
   <StyledMenu>
     <Button type="button">Settings</Button>
@@ -16,7 +16,7 @@ const Settingsbtn = ({
       <GreetingOptions check={preferences.greeting} setPreferences={setPreferences} />
       <SearchOptions check={preferences.searchBar} setPreferences={setPreferences} />
       <CurrentWeather check={preferences.weatherCur} setPreferences={setPreferences} />
-      <WidgetLocation setOrientation={setOrientation} />
+      <WidgetLocation setOrientation={setOrientation} orientation={orientation} />
       <ButtonSmall type="button" onClick={update}>Set Preferences</ButtonSmall>
     </Wrapper>
   </StyledMenu>

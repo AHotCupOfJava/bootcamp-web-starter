@@ -30,7 +30,7 @@ const MainPage = () => {
       },
     ),
   })
-  console.log(localStorage.getItem('token'))
+
   const [fade, setFade] = useState(false)
   const flickr = new Flickr('4f9c1a03cd916127c332df8c7bb5f877')
   const [weather, setWeather] = useState()
@@ -85,22 +85,12 @@ const MainPage = () => {
     },
   })
 
-
+  const [orientation, setOrientation] = useState(preferences.orientation.toLowerCase())
   if (error || prefsError) {
     return `${error}`
   }
   if (loading || loadingPrefs) {
     return 'Loading...'
-  }
-
-  const orientation = preferences.orientation.toLowerCase()
-  let orient = ''
-  if (orientation === 'center') {
-    orient = 'center'
-  } else if (orientation === 'flex_start') {
-    orient = 'flex-start'
-  } else {
-    orient = 'flex-end'
   }
 
 
@@ -114,6 +104,8 @@ const MainPage = () => {
           preferences={data.getViewer.prefs}
           setPreferences={setPreferences}
           update={updatePrefs}
+          setOrientation={setOrientation}
+          orientation={orientation}
         />
       </TopBarWrapper>
 
@@ -124,7 +116,7 @@ const MainPage = () => {
         fade={fade}
       />
 
-      <Container style={{ justifyContent: orient }}>
+      <Container style={{ justifyContent: orientation }}>
         <Wrapper>
           {preferences.greeting ? (
             <UserGreeting name={data.getViewer.firstName} />) : (null)}

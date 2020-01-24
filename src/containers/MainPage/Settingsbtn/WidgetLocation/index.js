@@ -2,14 +2,19 @@ import React from 'react'
 import Select from 'react-select'
 
 
-const options = [
-  { value: 'chocolate', label: 'Top' },
-  { value: 'strawberry', label: 'Center' },
-  { value: 'vanilla', label: 'Bottom' },
-]
-const WidgetLocation = () => (
-  <Select options={options} onChange={console.log('yeah!')} />
-)
+const WidgetLocation = ({ orientation, setOrientation }) => {
+  const options = [
+    { value: 'flex-start', label: 'Top' },
+    { value: 'center', label: 'Center' },
+    { value: 'flex-end', label: 'Bottom' },
+  ]
+  const changeOrientation = val => {
+    setOrientation(val.value)
+  }
+
+  return (
+    <Select options={options} onChange={changeOrientation} />)
+}
 
 
 export default WidgetLocation
