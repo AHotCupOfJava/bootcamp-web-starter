@@ -15,7 +15,9 @@ const formReducer = (prevState, payload) => ({ ...prevState, ...payload })
 
 const MainPage = () => {
   const [preferences, setPreferences] = useReducer(
-    formReducer, { searchBar: true, weatherCur: true, greeting: true },
+    formReducer, {
+      searchBar: true, weatherCur: true, greeting: true, orientation: 'CENTER',
+    },
   )
 
   const { loading, error, data } = useQuery(GET_VIEWER, {
@@ -24,6 +26,7 @@ const MainPage = () => {
         searchBar: getViewer.prefs.searchBar,
         weatherCur: getViewer.prefs.weatherCur,
         greeting: getViewer.prefs.greeting,
+        orientation: getViewer.prefs.orientation,
       },
     ),
   })
@@ -89,6 +92,17 @@ const MainPage = () => {
     return 'Loading...'
   }
 
+  const orientation = preferences.orientation.toLowerCase()
+  let orient = ''
+  if (orientation === 'center') {
+    orient = 'center'
+  } else if (orientation === 'flex_start') {
+    orient = 'flex-start'
+  } else {
+    orient = 'flex-end'
+  }
+
+
   return (
 
 
@@ -109,13 +123,13 @@ const MainPage = () => {
         fade={fade}
       />
 
-      <Container>
+      <Container style={{ justifyContent: orient }}>
         {preferences.greeting ? (
           <UserGreeting name={data.getViewer.firstName} />) : (null)}
         {preferences.weatherCur ? (
           <WeatherWrapper>
             {temp}
-ºF with
+            ºF with
             {' '}
             {description}
           </WeatherWrapper>
