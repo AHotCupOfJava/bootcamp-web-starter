@@ -41,12 +41,12 @@ const MainPage = () => {
     if (!weather) {
       navigator.geolocation.getCurrentPosition(async ({ coords }) => {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=db5bbba816b58757082ce2230c7754a6&units=imperial`)
-        const data = await response.json()
-        setWeather(data)
-        setTemp(data.main.temp)
-        setDescription(data.weather[0].description)
+        const weatherData = await response.json()
+        setWeather(weatherData)
+        setTemp(weatherData.main.temp)
+        setDescription(weatherData.weather[0].description)
         const imgLibrary = await flickr.photos.search({
-          text: `${data.weather[0].description} background`,
+          text: `${weatherData.weather[0].description} background`,
           extras: ['url_c', 'description'],
           per_page: 1,
           sort: 'relevance',
@@ -67,6 +67,17 @@ const MainPage = () => {
   const [updatePrefs, { loadingPrefs, prefsError }] = useMutation(PREFERENCES, {
     variables: {
       input: preferences,
+    },
+    update: (client, { data: { updatePreferences } }) => {
+      try {
+        const currentData = client.readQuery({ query: GET_VIEWER })
+
+        currentData.getViewer.prefs = updatePreferences
+
+        client.writeQuery({ query: GET_VIEWER, data: currentData })
+      } catch (e) {
+        throw new Error(e)
+      }
     },
   })
 

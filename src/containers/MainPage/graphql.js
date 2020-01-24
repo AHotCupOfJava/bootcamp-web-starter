@@ -17,9 +17,9 @@ export const GET_VIEWER = gql`
 export const PREFERENCES = gql`
   mutation PREFERENCES ($input: NewPrefsInput!){
     updatePreferences(input: $input){
-      searchBar,
-      weatherCur,
-      greeting,
+      searchBar
+      weatherCur
+      greeting
     }
   }
 `
