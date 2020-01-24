@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
     width: 100vw;
@@ -68,8 +67,7 @@ export const Anchor = styled.a`
 export const TopBarWrapper = styled.div`
   width: 100vw;
   height: auto;
-  display: flex;
-  justify-content: start;
+  position: fixed;
+  top: 0px;
+  margin: 15px;
 `
-
-export const StyledLink = styled(Link)``
