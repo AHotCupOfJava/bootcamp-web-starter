@@ -1,21 +1,23 @@
 import React from 'react'
-import { ApolloClient } from 'apollo-client'
+import { useApolloClient } from '@apollo/react-hooks'
 import { StyledLink, Button } from './styles'
 
+const LogOutLink = () => {
+  const client = useApolloClient()
 
-const LogOutLink = () => (
+  const handleLogOut = () => {
+    localStorage.removeItem('token')
+    client.resetStore()
+  }
 
-  <StyledLink to="/">
-    <Button
-      type="button"
-
-    >
-    Log Out
-    </Button>
-  </StyledLink>
-
-
-)
+  return (
+    <StyledLink to="/">
+      <Button type="button" onClick={handleLogOut}>
+      Log Out
+      </Button>
+    </StyledLink>
+  )
+}
 
 
 export default LogOutLink
