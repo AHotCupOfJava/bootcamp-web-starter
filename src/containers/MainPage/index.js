@@ -21,13 +21,6 @@ const MainPage = () => {
   )
 
   const { loading, error, data } = useQuery(GET_VIEWER, {
-    update: (client, { data: { getViewer } }) => {
-      try {
-        client.resetQuery(getViewer)
-      } catch (error) {
-
-      }
-    },
     onCompleted: ({ getViewer }) => setPreferences(
       {
         searchBar: getViewer.prefs.searchBar,
