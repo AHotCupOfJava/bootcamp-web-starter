@@ -54,7 +54,6 @@ const MainPage = () => {
           extras: ['url_c', 'description'],
           per_page: 1,
           sort: 'relevance',
-          tags: 'desktop wallpaper',
         })
 
         if (imgLibrary.body.photos.photo[0].url_c) {
@@ -85,7 +84,6 @@ const MainPage = () => {
     },
   })
 
-  const [orientation, setOrientation] = useState(preferences.orientation.toLowerCase())
   if (error || prefsError) {
     return `${error}`
   }
@@ -93,10 +91,17 @@ const MainPage = () => {
     return 'Loading...'
   }
 
+  let orient = ''
+  if (preferences.orientation === 'CENTER') {
+    orient = 'center'
+  } else if (preferences.orientation === 'FLEX_START') {
+    orient = 'flex-start'
+  } else {
+    orient = 'flex-end'
+  }
+
 
   return (
-
-
     <Page>
       <TopBarWrapper>
         <LogOutLink />
@@ -104,8 +109,6 @@ const MainPage = () => {
           preferences={data.getViewer.prefs}
           setPreferences={setPreferences}
           update={updatePrefs}
-          setOrientation={setOrientation}
-          orientation={orientation}
         />
       </TopBarWrapper>
 
@@ -116,7 +119,7 @@ const MainPage = () => {
         fade={fade}
       />
 
-      <Container style={{ justifyContent: orientation }}>
+      <Container style={{ justifyContent: orient }}>
         <Wrapper>
           {preferences.greeting ? (
             <UserGreeting name={data.getViewer.firstName} />) : (null)}

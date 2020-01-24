@@ -42,6 +42,7 @@ export const ButtonSmall = styled.button`
     border-radius: 3px;
     border: 2px solid #FFFFFF;
     margin: 5px;
+    margin-top: 40px;
     color: ${({ theme }) => theme.colors.link};
 
     &:hover {

@@ -12,8 +12,8 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   background-color: rgba(256,256,256,0.5);
-  width: 350px;
-  height: 200px;
+  width: 300px;
+  height: 150px;
   padding: 15px;
   text-align: center;
   border-radius: 10px;

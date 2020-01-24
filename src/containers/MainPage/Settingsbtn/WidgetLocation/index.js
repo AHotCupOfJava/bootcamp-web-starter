@@ -1,19 +1,29 @@
 import React from 'react'
-import Select from 'react-select'
+import { StyledSelect } from './styles'
 
 
-const WidgetLocation = ({ orientation, setOrientation }) => {
+const WidgetLocation = ({ setPreferences }) => {
   const options = [
-    { value: 'flex-start', label: 'Top' },
-    { value: 'center', label: 'Center' },
-    { value: 'flex-end', label: 'Bottom' },
+    { value: 'FLEX_START', label: 'Top' },
+    { value: 'CENTER', label: 'Center' },
+    { value: 'FLEX_END', label: 'Bottom' },
   ]
-  const changeOrientation = val => {
-    setOrientation(val.value)
+
+  const customStyles = {
+    option: (provided, state) => ({
+      color: state.isSelected ? 'gray' : 'black',
+      padding: 5,
+    }),
+    singleValue: (provided, state) => {
+      const opacity = state.isDisabled ? 0.5 : 1
+      const transition = 'opacity 300ms'
+
+      return { ...provided, opacity, transition }
+    },
   }
 
   return (
-    <Select options={options} onChange={changeOrientation} />)
+    <StyledSelect options={options} styles={customStyles} placeholder="Widget alignment..." onChange={e => setPreferences({ orientation: e.value })} />)
 }
 
 
